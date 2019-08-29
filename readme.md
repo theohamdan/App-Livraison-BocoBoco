@@ -1,3 +1,21 @@
+Features :
+
+Nous avons 10 pages dans l'application :
+Problème dans la page n°5 -> 
+il faut que notre GoogleMaps nous affiche le chemin entre la position actuelle du livreur et l'adresse du client.
+Dans la page n°6 ->
+il faut que le GoogleMaps nous démarre le trajet pour commener à s'en aller.
+Dans la page n°7 ->
+- il faudra valider les bouttons - (moins).
+- il faudra pouvoire changer les montants.
+
+Dernière choses :
+- intégrer les données de GoogleSheets dans l'application.
+
+
+——————————————Fin de sujet———————————————
+
+
 
 L’utilisation de l’application livraison BocoBoco :
 
