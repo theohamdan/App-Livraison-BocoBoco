@@ -1,9 +1,29 @@
 // AppLivreur1 -> Mot de passe
 function checkPswd(ext) {
-                    if ((document.pswdForm.pswd.value == null) == (document.pswdForm.pswd.value == 'passwordlivreur')) 
-                            alert('Mot de passe invalide.');
-                        else this.location.href = document.pswdForm.pswd.value + ext; 
+    if ((document.pswdForm.pswd.value == null) == (md5(document.pswdForm.pswd.value) == '5e3467cf03e72f5bbf9ce969fbbbab9e')) // votre nouveua mot de passe 
+            alert('Mot de passe invalide.');
+    else this.location.href = ext; 
                         // alert('Bienvenu.');
+}
+
+
+//pour la page n° 3
+function next(){
+
+var isvalidated = true;
+var divs = document.querySelectorAll('.selectall');
+
+[].forEach.call(divs, function(element) {
+  if (element.checked == false){
+    isvalidated = false;
+  }
+  });
+  if (isvalidated == true){
+    window.open ("AppLivreur4.html")
+  }
+  else {
+    alert('veuillez cocher sur tous les cases et rassurez-vous de ne rien oublier !');
+  }
 }
 
 
@@ -20,7 +40,6 @@ if(variable1 != "" && variable2 != "" ) {
    document.getElementById("total1").value = "0";
     }
 }
-
 
 
 
@@ -44,6 +63,7 @@ var cart = {
 };
 
 function displayCart(){
+  
   if(cart.products.length == 0){
     document.getElementById('cart').innerHTML = '<h5>Aucun produit</h5>';
     
@@ -63,6 +83,7 @@ function displayCart(){
 }
 
 function addProduct(id){
+  
   var title = document.querySelector('#produit-' + id + ' h3').innerHTML;
   var price = Number(document.getElementById('prix-' + id).value);
   var product = {
@@ -87,72 +108,45 @@ for(var i = 0; i < buttons.length; i++){
 
 displayCart();
 
+function addvalue(){
 
-// // Map_Livraison
-// function initMap(){
-//       // Map options
-//       var options = {
-//         zoom:8,
-//         center:{lat:42.3601,lng:-71.0589}
-//       }
+}
+var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 15
+        });
+        infoWindow = new google.maps.InfoWindow;
 
-//       // New map
-//       var map = new google.maps.Map(document.getElementById('map'), options);
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
 
-//       // Listen for click on map
-//       google.maps.event.addListener(map, 'click', function(event){
-//         // Add marker
-//         addMarker({coords:event.latLng});
-//       });
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('localisation trouvée');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
 
-//       // Array of markers
-//       var markers = [
-//         {
-//           coords:{lat:42.4668,lng:-70.9495},
-//           iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-//           content:'<h1>Lynn MA</h1>'
-//         },
-//         {
-//           coords:{lat:42.8584,lng:-70.9300},
-//           content:'<h1>Amesbury MA</h1>'
-//         },
-//         {
-//           coords:{lat:42.7762,lng:-71.0773}
-//         }
-//       ];
-
-//       // Loop through markers
-//       for(var i = 0;i < markers.length;i++){
-//         // Add marker
-//         addMarker(markers[i]);
-//       }
-
-//       // Add Marker Function
-//       function addMarker(props){
-//         var marker = new google.maps.Marker({
-//           position:props.coords,
-//           map:map,
-//           //icon:props.iconImage
-//         });
-
-//         // Check for customicon
-//         if(props.iconImage){
-//           // Set icon image
-//           marker.setIcon(props.iconImage);
-//         }
-
-//         // Check content
-//         if(props.content){
-//           var infoWindow = new google.maps.InfoWindow({
-//             content:props.content
-//           });
-
-//           marker.addListener('click', function(){
-//             infoWindow.open(map, marker);
-//           });
-//         }
-//     }
-// }
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
 
 function updateCartTotal() {
     var cartItemContainer = document.getElementsByClassName('cart-items')[0]
@@ -168,4 +162,20 @@ function updateCartTotal() {
     }
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText =  total + '$'
+}
+
+function updateCartTotalminus() {
+    var cartItemContainer = document.getElementsByClassName('cart-items')[0]
+    var cartRows = cartItemContainer.getElementsByClassName('cart-row')
+    var total = 0
+    for (var i = 0; i < cartRows.length; i++) {
+        var cartRow = cartRows[i]
+        var priceElement = cartRow.getElementsByClassName('cart-price')[0]
+        var quantityElement = cartRow.getElementsByClassName('cart-quantityminus-input')[0]
+        var price = parseFloat(priceElement.innerText.replace('$', ''))
+        var quantity_minus = quantityElement.value
+        total = total - (price * quantity_minus)
+    }
+    total = Math.round(total * 100) / 100
+    document.getElementsByClassName('cart-total-price')[0].innerText =  total - '$'
 }
