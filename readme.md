@@ -1,7 +1,7 @@
 
 L’utilisation de l’application livraison BocoBoco :
 
-Nous avons 10 fichier html, cela veut dire que 10 pages dans l’application + 2 fichiers js + un fichier CSS.
+Nous avons 10 fichier html, cela veut dire que 10 pages dans l’application + 3 fichiers js + un fichier CSS.
 
 
 Commençons par le fichier :
