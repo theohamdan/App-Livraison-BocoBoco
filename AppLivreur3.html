@@ -7,6 +7,7 @@
         <!-- -------------------------------RESPONSIVE-------------------------------------- -->
         <title> Affichage livraison </title>
         <link rel="stylesheet" href="styles.css" />
+        <script src="StoreApplication.js" async></script>
         <!-- <script src="StoreApplication.js" async></script> -->
         <!-- -------------------------------RESPONSIVE-------------------------------------- -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,19 +29,40 @@
         <br></br>
         <FORM>
             <ul>
-            <INPUT class= selectall type="checkbox" name="choix1" value="1"> Affiches livraison
-            <p></p>
-            <INPUT type="checkbox" name="choix2" value="2"> Chaussures fermées
-            <p></p>
-            <INPUT type="checkbox" name="choix3" value="3"> Téléphone portable et chargeur
-            <p></p>
-            <INPUT type="checkbox" name="choix4" value="4"> Itinéraire
-            <p></p>
-            <INPUT type="checkbox" name="choix6" value="6"> Caisses de sacs
-            <p></p>
-            <INPUT type="checkbox" name="choix7" value="7"> Sacs à pains
-            <p></p>
-            <INPUT type="checkbox" name="choix8" value="8"> La glacière de produits frais
+                <div>
+                <input class= "selectall" type="checkbox" id="Affiches" name="Affiches">
+                <label for="Affiches">Affiches livraison</label>
+                </div>
+                <p></p>
+                <div>
+                <input class= "selectall" type="checkbox" id="Chaussures" name="Chaussures">
+                <label for="Chaussures">Chaussures fermées</label>
+                </div>
+                <p></p>
+                <div>
+                <input class= "selectall" type="checkbox" id="Téléphone" name="Téléphone">
+                <label for="Téléphone">Téléphone portable et chargeur</label>
+                </div>
+                <p></p>
+                <div>
+                <input class= "selectall" type="checkbox" id="Itinéraire" name="Itinéraire">
+                <label for="Itinéraire">Itinéraire</label>
+                </div>
+                <p></p>
+                <div>
+                <input class= "selectall" type="checkbox" id="Caisses" name="Caisses">
+                <label for="Caisses">Caisses de sacs</label>
+                </div>
+                <p></p>
+                <div>
+                <input class= "selectall" type="checkbox" id="Sacs" name="Sacs">
+                <label for="Sacs">Sacs à pains</label>
+                </div>
+                <p></p>
+                <div>
+                <input class= "selectall" type="checkbox" id="produits" name="produits">
+                <label for="produits">La glacière de produits frais</label>
+                </div>
             </ul>
         </FORM>
         <br></br>
@@ -48,19 +70,10 @@
 
 
 
-<form ... onsubmit="return checkForm(this);">
-
-<p><input type="checkbox" required name="terms"> La glacière de produits frais  </p>
-<div class="bouttonPage3_Suivant">
-<a href="AppLivreur4.html"> <button type="submit">Fin</button></a>
-</div>
-</form>
-
-
-
         <!-- Boutton 'Suivant' -->
         <div class="bouttonPage3">
-            <a href="AppLivreur4.html"> <button type="submit">Suivant</button></a>
+            <button type="submit" onclick="next()">Suivant</button>
+
         </div>
         <!-- Boutton 'précédent' -->
         <div class="bouttonPage3_Suivant">
